@@ -1,12 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build MathSprint, a fast-paced mental math training game where players solve as many arithmetic problems as possible within 2 minutes.
+**Goal:** Fix the math question not displaying on the game screen during active gameplay.
 
 **Planned changes:**
-- Backend actor that generates random arithmetic problems for all four operations (+, -, ×, ÷), with division always yielding whole-number answers
-- Backend functions to submit and retrieve top-10 high scores (name, correct count, timestamp), persisted across calls
-- Start screen with game name, brief rules, and a "Start Game" button
-- Game screen with a 2-minute countdown timer, one problem displayed at a time, numeric input submitted via Enter or button, score increments on correct answers, new problem loads instantly on any answer
-- Results screen showing final score, name entry + score submission, top-10 leaderboard, and a "Play Again" button
-- Bold, energetic dark-themed UI with neon green/vivid orange accents, large problem typography, and snappy (<150ms) problem transitions
+- Ensure the arithmetic problem from `useGameState` / `useQueries generateProblem` is correctly read and passed to the rendered JSX in `GameScreen.tsx`
+- Make the problem text visible immediately when the game starts, with sufficient contrast against the dark background
+- Ensure the problem display is not hidden, blocked by a loading state, or showing undefined/null during an active game session
+- Display a new problem immediately after each answer submission
+
+**User-visible outcome:** Players can see the arithmetic problem (e.g., "7 × 8 = ?") displayed prominently and legibly on the game screen throughout the entire game session.

@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-build-a-game-screen-with-a-2-minute-countdown-timer-when-the-timer-starts-a-random-arithmetic-problem-is-displayed-the-player-types-their-numeric-answer-and-submits-via-enter-or-a-button-if-correct-the-score-increments-and-a-new-problem-appears-immediately-if-wrong-a-new-problem-appears-without-incrementing-the-score-when-the-timer-reaches-zero-the-game-ends-and-the-final-score-is-shown",
-      "featureTitle": "Build a game screen with a 2-minute countdown timer. When the timer starts, a random arithmetic problem is displayed. The player types their numeric answer and submits (via Enter or a button). If correct, the score increments and a new problem appears immediately. If wrong, a new problem appears without incrementing the score. When the timer reaches zero, the game ends and the final score is shown.",
+      "featureId": "feature-fix-the-game-screen-so-that-the-arithmetic-problem-math-question-is-visibly-rendered-during-active-gameplay-the-problem-text-must-appear-immediately-when-the-game-starts-and-update-each-time-a-new-problem-is-fetched-ensure-the-question-display-element-is-not-hidden-has-sufficient-contrast-against-the-dark-background-and-is-not-conditionally-blocked-by-loading-or-undefined-state-verify-the-problem-data-from-the-backend-hook-usegamestate-usequeries-generateproblem-is-correctly-read-and-passed-to-the-rendered-jsx-in-gamescreen-tsx",
+      "featureTitle": "Fix the game screen so that the arithmetic problem (math question) is visibly rendered during active gameplay. The problem text must appear immediately when the game starts and update each time a new problem is fetched. Ensure the question display element is not hidden, has sufficient contrast against the dark background, and is not conditionally blocked by loading or undefined state. Verify the problem data from the backend hook (useGameState / useQueries generateProblem) is correctly read and passed to the rendered JSX in GameScreen.tsx.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/hooks/useGameTimer.ts",
-        "frontend/src/pages/GameScreen.tsx"
+        "frontend/src/hooks/useGameState.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,65 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-build-a-start-screen-that-explains-the-game-rules-briefly-and-includes-a-start-game-button-to-begin-the-session",
-      "featureTitle": "Build a start screen that explains the game rules briefly and includes a 'Start Game' button to begin the session.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/StartScreen.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-build-a-results-screen-shown-after-the-game-ends-it-displays-the-player-s-score-number-correct-allows-them-to-enter-a-name-and-submit-their-score-to-the-leaderboard-and-shows-a-top-10-leaderboard-fetched-from-the-backend-include-a-play-again-button-to-restart",
-      "featureTitle": "Build a results screen shown after the game ends. It displays the player's score (number correct), allows them to enter a name and submit their score to the leaderboard, and shows a top-10 leaderboard fetched from the backend. Include a 'Play Again' button to restart.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/ResultsScreen.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-apply-a-bold-energetic-visual-theme-using-a-dark-background-with-bright-accent-colors-e-g-neon-green-or-vivid-orange-large-readable-typography-for-problem-numbers-and-smooth-transitions-between-problems-the-style-should-feel-fast-paced-and-focused-to-reinforce-the-quick-thinking-nature-of-the-game",
-      "featureTitle": "Apply a bold, energetic visual theme using a dark background with bright accent colors (e.g., neon green or vivid orange), large readable typography for problem numbers, and smooth transitions between problems. The style should feel fast-paced and focused to reinforce the quick-thinking nature of the game.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
+        "REQ-7"
       ],
       "confidence": "high"
     }

@@ -1,113 +1,28 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Mental Math Training Game - Frontend Implementation",
+  "title": "Fix math question not displaying during gameplay",
   "requirements": [
     {
-      "id": "REQ-3",
-      "summary": "Build game screen with 2-minute countdown timer, problem display, answer input, and scoring logic",
+      "id": "REQ-7",
+      "summary": "Fix the game screen so that the arithmetic problem is visibly rendered during active gameplay with proper contrast and immediate updates",
       "acceptanceCriteria": [
-        "Countdown timer starts at 2:00 and counts down in real-time seconds",
-        "One problem is shown at a time",
-        "Correct answer increments score and loads next problem instantly",
-        "Incorrect answer loads next problem without incrementing score",
-        "Game ends automatically when timer hits 0:00",
-        "Final score screen shows total correct answers"
+        "When the game starts, an arithmetic problem (e.g., '7 × 8 = ?') is displayed prominently on the game screen.",
+        "The problem text is visible against the dark background with sufficient contrast.",
+        "A new problem appears immediately after the player submits an answer (correct or incorrect).",
+        "The problem display does not remain blank or show undefined/null at any point during an active game session.",
+        "The problem is rendered in large, readable typography consistent with the bold visual theme."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/GameScreen.tsx",
-          "operation": "create",
-          "description": "Create the main game screen component that manages the 2-minute countdown timer (starting at 120 seconds), fetches problems from backend via generateProblem(), displays the current problem question, accepts numeric answer input, validates answers against correctAnswer, increments score on correct answers, loads next problem immediately after submission, and transitions to results screen when timer reaches zero. Use the backend interface types (Problem, Operation) for type safety."
-        },
-        {
-          "path": "frontend/src/hooks/useGameTimer.ts",
-          "operation": "create",
-          "description": "Create a custom hook that manages the 2-minute countdown timer logic, starting at 120 seconds, decrementing every second using setInterval, providing current time remaining, and triggering a callback when time reaches zero to end the game session."
-        },
-        {
-          "path": "frontend/src/hooks/useGameState.tsx",
-          "operation": "create",
-          "description": "Create a custom hook that manages game state including current score (number of correct answers), current problem (fetched via generateProblem backend function), answer input value, submission logic that compares input to correctAnswer, score increment on correct answer, and loading the next problem. Return state and handlers for use in GameScreen component."
-        },
-        {
-          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add route for GameScreen and wire navigation from StartScreen to GameScreen and from GameScreen to ResultsScreen based on game state transitions."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Build start screen with game rules explanation and Start Game button",
-      "acceptanceCriteria": [
-        "Start screen displays game name, brief instructions (2 minutes, answer as many as you can, all four operations)",
-        "A prominent 'Start Game' button transitions to the active game screen"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/StartScreen.tsx",
-          "operation": "create",
-          "description": "Create the start screen component that displays the game name 'MathSprint', brief instructions explaining the 2-minute time limit and all four operations (+, -, ×, ÷), and includes the generated logo image from frontend/public/assets/generated/mathsprint-logo.dim_256x256.png. Provide a prominent 'Start Game' button that triggers navigation to the game screen."
+          "description": "Debug and fix the problem display rendering by ensuring the problem data from useGameState is correctly displayed in the JSX. Verify the question element is not conditionally hidden by loading/undefined checks, add fallback rendering if problem is temporarily null, ensure text color has sufficient contrast against the dark background (use neon or electric theme tokens), and confirm the typography is large and readable. Add defensive null checks and ensure the problem updates immediately when currentProblem changes."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/hooks/useGameState.ts",
           "operation": "modify",
-          "description": "Add route for StartScreen as the default/home route and wire the Start Game button navigation to GameScreen."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Build results screen showing final score, leaderboard submission, top-10 display, and Play Again button",
-      "acceptanceCriteria": [
-        "Results screen shows total correct answers prominently",
-        "Player can enter their name and submit score",
-        "Top-10 leaderboard is displayed with rank, name, and score",
-        "Play Again button resets the game to start screen"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ResultsScreen.tsx",
-          "operation": "create",
-          "description": "Create the results screen component that displays the final score (number of correct answers) prominently, provides a name input field and submit button to call submitScore backend function with the player name and score, fetches and displays the top-10 leaderboard via getLeaderboard backend function showing rank, name, and numCorrect for each entry, and includes a 'Play Again' button that navigates back to the start screen. Use backend interface types (Score) for type safety."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add route for ResultsScreen and wire the Play Again button navigation back to StartScreen."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Apply bold, energetic visual theme with dark background, bright accents, large typography, and smooth transitions",
-      "acceptanceCriteria": [
-        "Dark background with high-contrast accent colors applied consistently across all screens",
-        "Problem text is large and instantly readable",
-        "Score and timer are always prominently visible during gameplay",
-        "Transitions between problems are snappy (< 150ms)"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Update global styles to apply a dark background (e.g., near-black #0a0a0a or similar) with neon green (#00ff88 or similar) and vivid orange (#ff6b35 or similar) accent colors. Ensure high contrast for readability and apply consistent theming across all screens."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend Tailwind theme configuration to include custom colors for the energetic theme (dark background, neon green accent, vivid orange accent), configure large font sizes for problem text (e.g., text-5xl or text-6xl), and add transition utilities with duration under 150ms for snappy problem transitions."
-        },
-        {
-          "path": "frontend/src/components/Layout.tsx",
-          "operation": "create",
-          "description": "Create a layout component that wraps all screens with the dark background theme and ensures consistent styling. This component provides the visual frame for start, game, and results screens."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wrap all routes with the Layout component to ensure consistent theming across StartScreen, GameScreen, and ResultsScreen."
+          "description": "Review and fix the problem data flow from the generateProblem backend call to ensure currentProblem is set immediately when the game starts and updates synchronously after each answer submission. Verify the hook correctly manages the problem state lifecycle, handles the initial fetch on mount, and triggers a new problem fetch after handleSubmitAnswer. Add console logging or error handling if the backend query fails or returns undefined."
         }
       ]
     }

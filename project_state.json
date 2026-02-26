@@ -1,11 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "A mental math game that trains users to perform quick arithmetic. Covers all four operations (+, -, ×, ÷). Each session is 2 minutes long and the score is based on how many problems the player answers correctly within that time.",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Bold lightning bolt math symbol logo mark with neon green glow on dark background (mathsprint-logo.dim_256x256.png)",
+  "known_issues": [
+    "Math question/problem is not displaying during gameplay"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-build-a-game-screen-with-a-2-minute-countdown-timer-when-the-timer-starts-a-random-arithmetic-problem-is-displayed-the-player-types-their-numeric-answer-and-submits-via-enter-or-a-button-if-correct-the-score-increments-and-a-new-problem-appears-immediately-if-wrong-a-new-problem-appears-without-incrementing-the-score-when-the-timer-reaches-zero-the-game-ends-and-the-final-score-is-shown",
@@ -36,6 +37,14 @@
       "title": "Apply a bold, energetic visual theme using a dark background with bright accent colors (e.g., neon green or vivid orange), large readable typography for problem numbers, and smooth transitions between problems. The style should feel fast-paced and focused to reinforce the quick-thinking nature of the game.",
       "reqIds": [
         "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-game-screen-so-that-the-arithmetic-problem-math-question-is-visibly-rendered-during-active-gameplay-the-problem-text-must-appear-immediately-when-the-game-starts-and-update-each-time-a-new-problem-is-fetched-ensure-the-question-display-element-is-not-hidden-has-sufficient-contrast-against-the-dark-background-and-is-not-conditionally-blocked-by-loading-or-undefined-state-verify-the-problem-data-from-the-backend-hook-usegamestate-usequeries-generateproblem-is-correctly-read-and-passed-to-the-rendered-jsx-in-gamescreen-tsx",
+      "title": "Fix the game screen so that the arithmetic problem (math question) is visibly rendered during active gameplay. The problem text must appear immediately when the game starts and update each time a new problem is fetched. Ensure the question display element is not hidden, has sufficient contrast against the dark background, and is not conditionally blocked by loading or undefined state. Verify the problem data from the backend hook (useGameState / useQueries generateProblem) is correctly read and passed to the rendered JSX in GameScreen.tsx.",
+      "reqIds": [
+        "REQ-7"
       ],
       "version": 1
     }

@@ -3,7 +3,7 @@ import { useActor } from './useActor';
 import type { Problem } from '../backend';
 
 export function useGameState() {
-  const { actor } = useActor();
+  const { actor, isFetching: isActorFetching } = useActor();
   const [currentProblem, setCurrentProblem] = useState<Problem | null>(null);
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
@@ -13,6 +13,7 @@ export function useGameState() {
   const [isGameActive, setIsGameActive] = useState(false);
   const actorRef = useRef(actor);
   const feedbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const needsFirstProblemRef = useRef(false);
 
   useEffect(() => {
     actorRef.current = actor;
@@ -26,6 +27,7 @@ export function useGameState() {
       const problem = await currentActor.generateProblem();
       setCurrentProblem(problem);
       setAnswer('');
+      needsFirstProblemRef.current = false;
     } catch (err) {
       console.error('Failed to fetch problem:', err);
     } finally {
@@ -33,13 +35,29 @@ export function useGameState() {
     }
   }, []);
 
+  // When actor becomes available and game is active but no problem loaded yet, fetch the first problem
+  useEffect(() => {
+    if (actor && !isActorFetching && needsFirstProblemRef.current) {
+      needsFirstProblemRef.current = false;
+      fetchNextProblem();
+    }
+  }, [actor, isActorFetching, fetchNextProblem]);
+
   const startGame = useCallback(async () => {
     setScore(0);
     setTotalAnswered(0);
     setAnswer('');
     setFeedback(null);
+    setCurrentProblem(null);
     setIsGameActive(true);
-    await fetchNextProblem();
+
+    if (actorRef.current) {
+      await fetchNextProblem();
+    } else {
+      // Actor not ready yet — flag that we need the first problem once actor is available
+      needsFirstProblemRef.current = true;
+      setIsLoadingProblem(true);
+    }
   }, [fetchNextProblem]);
 
   const submitAnswer = useCallback(async () => {
@@ -69,6 +87,7 @@ export function useGameState() {
 
   const endGame = useCallback(() => {
     setIsGameActive(false);
+    needsFirstProblemRef.current = false;
     if (feedbackTimeoutRef.current) {
       clearTimeout(feedbackTimeoutRef.current);
     }
