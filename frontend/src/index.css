@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Game dark theme - light mode still uses dark for immersion */
+    --background: 0.12 0.005 260;
+    --foreground: 0.96 0.005 260;
+    --card: 0.16 0.008 260;
+    --card-foreground: 0.96 0.005 260;
+    --popover: 0.18 0.008 260;
+    --popover-foreground: 0.96 0.005 260;
+    --primary: 0.85 0.22 145;
+    --primary-foreground: 0.1 0.005 260;
+    --secondary: 0.22 0.01 260;
+    --secondary-foreground: 0.96 0.005 260;
+    --muted: 0.22 0.01 260;
+    --muted-foreground: 0.55 0.01 260;
+    --accent: 0.72 0.19 45;
+    --accent-foreground: 0.1 0.005 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.96 0.005 260;
+    --border: 0.28 0.01 260;
+    --input: 0.22 0.01 260;
+    --ring: 0.85 0.22 145;
+
+    /* Custom game tokens */
+    --neon: 0.85 0.22 145;
+    --orange-accent: 0.72 0.19 45;
+    --electric: 0.65 0.22 250;
+    --pink-accent: 0.72 0.19 330;
+    --game-bg: 0.10 0.008 260;
+    --game-card: 0.16 0.008 260;
+    --game-border: 0.26 0.012 260;
+
+    --chart-1: 0.85 0.22 145;
+    --chart-2: 0.72 0.19 45;
+    --chart-3: 0.65 0.22 250;
+    --chart-4: 0.72 0.19 330;
+    --chart-5: 0.75 0.18 200;
+    --sidebar: 0.14 0.008 260;
+    --sidebar-foreground: 0.96 0.005 260;
+    --sidebar-primary: 0.85 0.22 145;
+    --sidebar-primary-foreground: 0.1 0.005 260;
+    --sidebar-accent: 0.22 0.01 260;
+    --sidebar-accent-foreground: 0.96 0.005 260;
+    --sidebar-border: 0.26 0.012 260;
+    --sidebar-ring: 0.85 0.22 145;
+  }
+
+  .dark {
+    --background: 0.10 0.008 260;
+    --foreground: 0.96 0.005 260;
+    --card: 0.14 0.008 260;
+    --card-foreground: 0.96 0.005 260;
+    --popover: 0.16 0.008 260;
+    --popover-foreground: 0.96 0.005 260;
+    --primary: 0.85 0.22 145;
+    --primary-foreground: 0.1 0.005 260;
+    --secondary: 0.20 0.01 260;
+    --secondary-foreground: 0.96 0.005 260;
+    --muted: 0.20 0.01 260;
+    --muted-foreground: 0.55 0.01 260;
+    --accent: 0.72 0.19 45;
+    --accent-foreground: 0.1 0.005 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.96 0.005 260;
+    --border: 0.26 0.012 260;
+    --input: 0.20 0.01 260;
+    --ring: 0.85 0.22 145;
+
+    --neon: 0.85 0.22 145;
+    --orange-accent: 0.72 0.19 45;
+    --electric: 0.65 0.22 250;
+    --pink-accent: 0.72 0.19 330;
+    --game-bg: 0.10 0.008 260;
+    --game-card: 0.16 0.008 260;
+    --game-border: 0.26 0.012 260;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-game-bg text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Remove number input spinners */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

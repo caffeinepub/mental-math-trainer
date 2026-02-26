@@ -1,0 +1,11 @@
+{
+  "frontend/src/App.tsx": "Root application component that manages the three game views (start, game, results) using local state, passing score and navigation callbacks between screens.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend interactions: generating problems, fetching the leaderboard, and submitting scores with cache invalidation.",
+  "frontend/src/hooks/useGameTimer.ts": "Custom hook managing the 2-minute countdown timer with setInterval, providing formatted time, progress percentage, urgency flag, and a callback when time expires.",
+  "frontend/src/hooks/useGameState.ts": "Custom hook encapsulating all game logic including current problem fetching, answer state, score tracking, feedback flashes, and game lifecycle (start/submit/end).",
+  "frontend/src/pages/StartScreen.tsx": "Landing page displaying the MathSprint logo, game title, how-to-play instructions, operation previews, and a prominent Start Game button.",
+  "frontend/src/pages/GameScreen.tsx": "Active game screen showing the countdown timer bar, current math problem in large typography, answer input with Enter-key support, and live stats (score, answered, accuracy).",
+  "frontend/src/pages/ResultsScreen.tsx": "Post-game results screen showing the final score with a motivational message, leaderboard submission form, top-10 leaderboard table, and a Play Again button.",
+  "frontend/src/index.css": "Global styles with a dark game-focused OKLCH color system featuring neon green and orange accents, Space Grotesk and Inter font imports, and custom game color tokens.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Space Grotesk display font, custom game color tokens (neon, orange-accent, electric, pink-accent, game-bg/card/border), neon glow shadows, and flash animations."
+}

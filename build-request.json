@@ -1,0 +1,138 @@
+{
+  "kind": "build_request",
+  "title": "Mental Math Training Game",
+  "projectName": "MathSprint",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a backend actor that generates random arithmetic problems covering all four operations (addition, subtraction, multiplication, division). Division problems must always produce whole-number answers. Each problem should include the question, the correct answer, and the operation type.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "mental math game for all operation combination"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Problems are generated for +, -, ×, ÷ operations",
+        "Division problems always yield whole-number answers",
+        "Problem numbers are within a reasonable range for mental math (e.g., 1–20 for harder ops, 1–50 for addition/subtraction)",
+        "Each problem returns question text, correct answer, and operation type"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a backend function to record and retrieve high scores. Each score entry should store the player's name (or anonymous label), number of correct answers, and timestamp.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "score should be based on how many you got right"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A submitScore function accepts a name and correct-answer count and stores it",
+        "A getTopScores function returns the top 10 scores sorted by correct answers descending",
+        "Scores persist across canister calls"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a game screen with a 2-minute countdown timer. When the timer starts, a random arithmetic problem is displayed. The player types their numeric answer and submits (via Enter or a button). If correct, the score increments and a new problem appears immediately. If wrong, a new problem appears without incrementing the score. When the timer reaches zero, the game ends and the final score is shown.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "you should have 2 minute during score should be based on how many you got right with the time"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Countdown timer starts at 2:00 and counts down in real-time seconds",
+        "One problem is shown at a time",
+        "Correct answer increments score and loads next problem instantly",
+        "Incorrect answer loads next problem without incrementing score",
+        "Game ends automatically when timer hits 0:00",
+        "Final score screen shows total correct answers"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build a start screen that explains the game rules briefly and includes a 'Start Game' button to begin the session.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "train you to do mental math quick"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Start screen displays game name, brief instructions (2 minutes, answer as many as you can, all four operations)",
+        "A prominent 'Start Game' button transitions to the active game screen"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build a results screen shown after the game ends. It displays the player's score (number correct), allows them to enter a name and submit their score to the leaderboard, and shows a top-10 leaderboard fetched from the backend. Include a 'Play Again' button to restart.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "score should be based on how many you got right"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results screen shows total correct answers prominently",
+        "Player can enter their name and submit score",
+        "Top-10 leaderboard is displayed with rank, name, and score",
+        "Play Again button resets the game to start screen"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Apply a bold, energetic visual theme using a dark background with bright accent colors (e.g., neon green or vivid orange), large readable typography for problem numbers, and smooth transitions between problems. The style should feel fast-paced and focused to reinforce the quick-thinking nature of the game.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "train you to do mental math quick"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dark background with high-contrast accent colors applied consistently across all screens",
+        "Problem text is large and instantly readable",
+        "Score and timer are always prominently visible during gameplay",
+        "Transitions between problems are snappy (< 150ms)"
+      ]
+    }
+  ],
+  "constraints": [
+    "All arithmetic operations must be supported: addition, subtraction, multiplication, division",
+    "Division problems must always yield whole-number results (no decimals)",
+    "Game session is exactly 2 minutes long — no configurable duration in this version"
+  ],
+  "nonGoals": [
+    "User authentication or Internet Identity login",
+    "Difficulty level selection",
+    "Multiplayer or real-time competitive modes",
+    "Detailed per-question history or analytics"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Bold lightning bolt math symbol logo mark with neon green glow on dark background (mathsprint-logo.dim_256x256.png)"
+    ],
+    "edits": []
+  }
+}

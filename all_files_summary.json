@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Motoko actor implementing the game backend with three endpoints: generateProblem (returns a random arithmetic problem), submitScore (stores a named score with timestamp), and getLeaderboard (returns the top-10 scores sorted by correct answers).",
+  "feature_evidence.json": "Feature evidence report mapping implemented features (game screen, start screen, results screen, visual theme) to their corresponding source files, components, and test IDs with confidence ratings.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence descriptions of each frontend source file, serving as a quick reference for the purpose of each component, hook, and style file.",
+  "frontend/index.css": "Tailwind base CSS file defining OKLCH-based CSS custom properties for light and dark color themes including background, foreground, card, chart, and sidebar tokens.",
+  "frontend/index.html": "Minimal HTML entry point titled 'Mental Math Trainer' that mounts the React app into a root div and loads the main TypeScript module.",
+  "frontend/src/App.tsx": "Root React component managing navigation between start, game, and results views using local state, passing score and callback props to each screen.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor (anonymous or authenticated) using React Query, and invalidates dependent queries when the identity changes.",
+  "frontend/src/hooks/useGameState.ts": "Custom hook encapsulating all game logic including fetching problems from the actor, tracking score and total answered, managing answer input, and providing feedback flash state.",
+  "frontend/src/hooks/useGameTimer.ts": "Custom hook managing a 2-minute countdown timer with start/stop controls, formatted time output, progress percentage, urgency flag for the last 30 seconds, and a callback on expiry.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an InternetIdentityProvider and useInternetIdentity hook for managing DFINITY AuthClient login, logout, and identity persistence with status tracking.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks wrapping backend actor calls for generating problems, fetching the leaderboard, and submitting scores with automatic leaderboard cache invalidation on success.",
+  "frontend/src/index.css": "Global CSS file that imports Google Fonts, sets up Tailwind directives, and defines a dark game-themed design system using OKLCH CSS custom properties for colors, including neon, electric, and accent tokens.",
+  "frontend/src/main.tsx": "React app entry point that mounts the app with QueryClientProvider for data fetching and InternetIdentityProvider for ICP authentication wrapping the root App component.",
+  "frontend/src/pages/GameScreen.tsx": "Active game screen component that displays arithmetic problems with a countdown timer HUD, handles answer input/submission, tracks score and accuracy, and calls onGameEnd when time expires.",
+  "frontend/src/pages/ResultsScreen.tsx": "Post-game results screen that shows the player's score with a contextual message, allows name entry and leaderboard score submission, and displays a fetched top-10 leaderboard with rank icons.",
+  "frontend/src/pages/StartScreen.tsx": "Landing/start screen that displays the MathSprint logo, branding, game rules (2-minute challenge, four operations), and a Start Game button to begin a session.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending the theme with OKLCH-based game color tokens (neon, electric, orange-accent), custom fonts (Space Grotesk, Inter), neon box shadows, and animation keyframes for game feedback.",
+  "project_state.json": "Project state manifest tracking the app's summary, existing implemented features, and pending architectural requirements for the MathSprint mental math game including backend problem generation and leaderboard functionality."
+}
